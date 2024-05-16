@@ -1,0 +1,12 @@
+    map.on('click', function(e) {
+        var marker = L.marker(e.latlng).addTo(map); // Tạo marker mới
+        markers.push(marker); // Thêm marker vào mảng
+
+        // Nối các điểm marker theo thứ tự chẵn với lẻ
+        if (markers.length % 2 === 0) {
+            var startPoint = markers[markers.length - 2].getLatLng();
+            var endPoint = markers[markers.length - 1].getLatLng();
+            var polyline = L.polyline([startPoint, endPoint], {color: 'blue'}).addTo(map);
+            polylines.push(polyline); // Thêm polyline vào mảng
+        }
+    });
